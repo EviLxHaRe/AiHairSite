@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual env
+myenv/
+.venv/
+
+# Runtime artifacts
+artifacts/
+artifacts_smoke/
+*.keras
+
+# Local debug datasets
+mini_data.npz
+mini_test.npz
+
+# Competition datasets (local only)
+Data.npz
+train_x.npy
+train_y.npy
+valid_x.npy
+valid_y.npy
+vaild_y.npy
+
+# OS/editor
+.DS_Store
+.idea/
