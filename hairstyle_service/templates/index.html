@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hairstyle Changer</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; text-align: center; }
+        .hairstyle-options { display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .hairstyle-card { border: 1px solid #ccc; padding: 15px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .hairstyle-card:hover { background-color: #f0f0f0; }
+        .hairstyle-card.selected { border-color: #007bff; background-color: #e7f1ff; }
+        .upload-section { margin: 30px 0; padding: 20px; border: 2px dashed #aaa; border-radius: 10px; }
+        #preview, #result-image { max-width: 100%; max-height: 400px; margin-top: 20px; display: none; border-radius: 8px;}
+        .btn { padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .btn:disabled { background-color: #ccc; cursor: not-allowed; }
+        #loading { display: none; margin: 20px 0; font-weight: bold; color: #555; }
+        .error { color: red; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Try a New Hairstyle!</h1>
+    <p>Upload a high-quality photo of your face, pick a hairstyle, and see the result.</p>
+
+    <div class="upload-section">
+        <input type="file" id="photo-input" accept="image/png, image/jpeg, image/jpg">
+        <br>
+        <img id="preview" alt="Preview">
+    </div>
+
+    <h3>Select a Hairstyle:</h3>
+    <div class="hairstyle-options" id="hairstyles-container">
+        {% for style in hairstyles %}
+        <div class="hairstyle-card" data-id="{{ style.id }}" onclick="selectHairstyle('{{ style.id }}')">
+            <h4>{{ style.name }}</h4>
+            <p>{{ style.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <button id="generate-btn" class="btn" onclick="generate()" disabled>Generate</button>
+    <div id="loading">Processing... This might take a moment.</div>
+    <div id="error-message" class="error"></div>
+
+    <div id="result-section" style="margin-top: 40px; display: none;">
+        <h3>Your New Look:</h3>
+        <img id="result-image" alt="Generated Hairstyle">
+    </div>
+
+    <script>
+        let selectedHairstyle = null;
+        let photoFile = null;
+
+        const photoInput = document.getElementById('photo-input');
+        const preview = document.getElementById('preview');
+        const generateBtn = document.getElementById('generate-btn');
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('error-message');
+        const resultSection = document.getElementById('result-section');
+        const resultImage = document.getElementById('result-image');
+
+        photoInput.addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                photoFile = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(photoFile);
+                checkReady();
+            }
+        });
+
+        function selectHairstyle(id) {
+            selectedHairstyle = id;
+            document.querySelectorAll('.hairstyle-card').forEach(card => {
+                card.classList.remove('selected');
+                if(card.dataset.id === id) {
+                    card.classList.add('selected');
+                }
+            });
+            checkReady();
+        }
+
+        function checkReady() {
+            generateBtn.disabled = !(selectedHairstyle && photoFile);
+        }
+
+        async function generate() {
+            if (!photoFile || !selectedHairstyle) return;
+
+            errorMessage.innerText = '';
+            resultSection.style.display = 'none';
+            loading.style.display = 'block';
+            generateBtn.disabled = true;
+
+            const formData = new FormData();
+            formData.append('photo', photoFile);
+            formData.append('hairstyle', selectedHairstyle);
+
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Something went wrong');
+                }
+
+                resultImage.src = data.result_url;
+                resultImage.style.display = 'block';
+                resultSection.style.display = 'block';
+
+            } catch (error) {
+                errorMessage.innerText = error.message;
+            } finally {
+                loading.style.display = 'none';
+                generateBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
