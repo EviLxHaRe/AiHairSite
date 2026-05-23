@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hair Try-On</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="studio" aria-labelledby="page-title">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Hairstyle studio</p>
+            <h1 id="page-title">Примерка прически</h1>
+          </div>
+        </header>
+
+        <div class="app-grid">
+          <form class="flow-surface" id="tryon-form">
+            <nav class="stepper" aria-label="Этапы примерки">
+              <button class="step-pill is-active" type="button" data-step="upload">
+                <span>1</span>
+                Фото
+              </button>
+              <button class="step-pill" type="button" data-step="style" disabled>
+                <span>2</span>
+                Прическа
+              </button>
+              <button class="step-pill" type="button" data-step="color" disabled>
+                <span>3</span>
+                Цвет
+              </button>
+            </nav>
+
+            <section class="flow-panel is-active" data-panel="upload">
+              <div class="panel-heading">
+                <p class="step-label">Шаг 1</p>
+                <h2>Загрузите фото</h2>
+              </div>
+
+              <label class="upload-drop" id="upload-zone">
+                <input id="photo-input" type="file" accept="image/png,image/jpeg" />
+                <span class="upload-symbol" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img">
+                    <path d="M12 3v12m0-12 4.5 4.5M12 3 7.5 7.5M4 15v3a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-3" />
+                  </svg>
+                </span>
+                <span>
+                  <strong id="file-label">Выбрать фото</strong>
+                  <small>PNG или JPEG до 6 МБ</small>
+                </span>
+              </label>
+
+              <button class="primary-button" id="next-upload-button" type="button" disabled>
+                <span>К выбору прически</span>
+              </button>
+            </section>
+
+            <section class="flow-panel" data-panel="style">
+              <div class="panel-heading">
+                <p class="step-label">Шаг 2</p>
+                <h2>Выберите прическу</h2>
+                <span id="style-count"></span>
+              </div>
+
+              <div class="hairstyle-grid" id="styles-grid"></div>
+
+              <div class="button-row">
+                <button class="secondary-button" id="back-style-button" type="button">Назад</button>
+                <button class="primary-button" id="next-style-button" type="button" disabled>
+                  <span>К выбору цвета</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="flow-panel" data-panel="color">
+              <div class="panel-heading">
+                <p class="step-label">Шаг 3</p>
+                <h2>Выберите цвет</h2>
+                <span id="color-count"></span>
+              </div>
+
+              <div class="color-grid" id="colors-grid"></div>
+
+              <div class="button-row">
+                <button class="secondary-button" id="back-color-button" type="button">Назад</button>
+                <button class="primary-button generate-button" id="generate-button" type="submit" disabled>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M13 2 3 14h8l-1 8 11-13h-8l1-7Z" />
+                  </svg>
+                  <span>Сгенерировать</span>
+                </button>
+              </div>
+            </section>
+
+            <p class="selection-summary" id="selection-summary">Загрузите фото, затем выберите прическу и цвет.</p>
+            <p class="form-message" id="form-message" role="status"></p>
+          </form>
+
+            <section class="result-stage" aria-label="Итоговое изображение">
+              <div class="preview-toolbar">
+                <div>
+                  <p class="eyebrow">Result</p>
+                  <h2>Итоговое изображение</h2>
+                </div>
+              </div>
+
+              <div class="preview-grid" id="preview-grid">
+              <figure class="preview-card primary-result">
+                <div class="image-frame">
+                  <img id="front-image" alt="Итоговое изображение с измененной прической" />
+                  <div class="placeholder result-placeholder" id="front-placeholder">
+                    <span class="spinner" aria-hidden="true"></span>
+                    <span id="front-text">Ожидает генерации</span>
+                  </div>
+                </div>
+              </figure>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

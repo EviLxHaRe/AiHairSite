@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Админка причесок</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace admin-workspace" aria-labelledby="admin-title">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">Hair catalog control</p>
+            <h1 id="admin-title">Админка причесок</h1>
+          </div>
+          <div class="top-actions">
+            <a class="ghost-link" href="/">К сервису</a>
+            <span class="status-pill mock" id="admin-mode">Login</span>
+          </div>
+        </div>
+
+        <div id="admin-app">
+          <section class="admin-panel admin-auth-panel">
+            <div class="block-title">
+              <div>
+                <p class="eyebrow">Access</p>
+                <h2>Загрузка</h2>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="/admin.js" defer></script>
+  </body>
+</html>

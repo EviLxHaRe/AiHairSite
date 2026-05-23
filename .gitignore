@@ -1,0 +1,9 @@
+.env
+.env.example
+*.log
+node_modules/
+.tools/
+data/admin-auth.json
+data/tmp/
+data/uploads/
+data/results/

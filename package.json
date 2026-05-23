@@ -1,0 +1,26 @@
+{
+  "name": "hair-try-on-service",
+  "version": "1.0.0",
+  "description": "Web service for hairstyle try-on and catalog management.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "hair",
+    "try-on",
+    "hairstyle",
+    "service"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.2.0"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "hairstyles": [
+    {
+      "id": "slicked-back",
+      "title": "Зачес назад",
+      "description": "Классический clean slick back: все волосы гладко зачесаны строго назад, без бокового пробора",
+      "apiName": "classic formal slicked back hairstyle combed straight back",
+      "tryitonName": "",
+      "hairProperty": "straight",
+      "accent": "#263238",
+      "previewImage": "",
+      "sourceImage": "https://allmenshaircuts.com/uploads/hairstyles/slicked-back/89.jpg",
+      "sourceFile": "data/references/slicked-back.jpg",
+      "path": "M198 384 C238 230 366 146 512 146 C658 146 786 230 826 384 C720 334 618 320 512 342 C406 320 304 334 198 384 Z"
+    },
+    {
+      "id": "long-top-undercut",
+      "title": "Андеркат с длинным верхом",
+      "description": "Резкий disconnected undercut: коротко снятые виски и затылок, длинный зачесанный верх без плавной тушевки",
+      "apiName": "disconnected undercut long top shaved sides",
+      "tryitonName": "",
+      "hairProperty": "straight",
+      "accent": "#0f766e",
+      "previewImage": "",
+      "sourceImage": "https://allmenshaircuts.com/uploads/hairstyles/undercut/176.jpg",
+      "sourceFile": "data/references/undercut-long-top.jpg",
+      "path": "M192 396 C230 244 356 156 510 156 C672 156 794 244 832 396 C720 330 616 310 512 352 C402 310 304 330 192 396 Z M198 404 L264 520 L276 404 Z M748 404 L826 404 L760 520 Z"
+    },
+    {
+      "id": "military",
+      "title": "Милитари",
+      "description": "Ультракороткий армейский кроп с чистым фейдом",
+      "apiName": "military buzz cut fade",
+      "tryitonName": "",
+      "hairProperty": "short",
+      "accent": "#3f4d37",
+      "previewImage": "",
+      "sourceImage": "https://images.pexels.com/photos/11744656/pexels-photo-11744656.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "sourceFile": "",
+      "path": "M236 350 C286 238 386 184 512 184 C638 184 738 238 788 350 C684 320 598 314 512 332 C426 314 340 320 236 350 Z M220 364 L274 498 L286 374 Z M738 374 L804 364 L750 498 Z"
+    },
+    {
+      "id": "crew-cut",
+      "title": "Ежик",
+      "description": "Короткий textured ежик: ровная макушка, короткие пряди торчком, виски и затылок плавно укорочены",
+      "apiName": "short textured spiky crew cut with tapered sides",
+      "tryitonName": "",
+      "hairProperty": "short",
+      "accent": "#475569",
+      "previewImage": "",
+      "sourceImage": "https://allmenshaircuts.com/uploads/hairstyles/textured-top/82.jpg",
+      "sourceFile": "data/references/crew-cut-spiky.jpg",
+      "path": "M206 382 C250 238 372 162 512 162 C652 162 774 238 818 382 C700 338 614 328 512 348 C410 328 324 338 206 382 Z"
+    }
+  ],
+  "colors": [
+    {
+      "id": "native-hair-color",
+      "title": "Родной цвет",
+      "apiName": "black",
+      "tryitonName": "",
+      "hex": "#2f2a26"
+    }
+  ]
+}
